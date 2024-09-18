@@ -1,8 +1,8 @@
 export const Header = () => {
   return (
     <>
-      <header>
-        <h1>ポケモンアプリ</h1>
+      <header className="header">
+        <h1>dog pictures</h1>
       </header>
     </>
   );

@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
 import { BreedsSelect } from "./BreedsSelect";
+import axios from "axios";
 
 export const DogListContainer = () => {
-  const [breeds, setBreeds] = useState([]);
+  const [breeds, setBreeds] = useState<string[]>([]);
   const [selectedBreed, setSelectedBreed] = useState("dammy");
 
+  //https://dog.ceo/api/breeds/list/all
+
   useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/list/all")
-      .then((res) => res.json())
-      .then((data) => {
-        const list = data.message;
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://dog.ceo/api/breeds/list/all`,
+        );
+        console.log(response.data);
+        const list = response.data.message;
         setBreeds(Object.keys(list));
-      });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
   }, []);
 
   const [imageUrlList, setImageUrlList] = useState([]);
 
-  const btnclick2 = () => {
-    fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random/12`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setImageUrlList(data.message);
-      });
+  const btnclick2 = async () => {
+      try {
+        const response = await axios.get(
+          `https://dog.ceo/api/breed/${selectedBreed}/images/random/12`
+        );
+        console.log(response.data);
+        const list = response.data.message;
+        setImageUrlList(list);
+      } catch (error) {
+        console.log(error);
+      }
   };
 
   return (
