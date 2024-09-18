@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kawanishi-LC.github.io/react-base4",
+  "homepage": "https://kawanishi-LC.github.io/react-base4/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
