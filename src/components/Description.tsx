@@ -4,21 +4,20 @@ import axios from "axios";
 
 export const Description = () => {
   const [dogUrl, setDogUrl] = useState(
-    "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg"
+    `https://images.dog.ceo/breeds/shiba/shiba-3i.jpg`
   );
 
   const btnclick = async () => {
-      try {
-        const response = await axios.get(
-          "https://dog.ceo/api/breeds/image/random"
-        );
-        console.log(response.data);
-        setDogUrl(response.data.message);
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      const response = await axios.get(
+        `https://dog.ceo/api/breeds/image/random`
+      );
+      console.log(response.data);
+      setDogUrl(response.data.message);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  btnclick();
 
   return (
     <>
